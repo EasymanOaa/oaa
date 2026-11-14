@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Contact — Omar Alaoui Architectes</title>
+<meta name="description" content="Contacter Omar Alaoui Architectes à Casablanca.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="contact" class="light">
+
+<a class="skip" href="#main">Aller au contenu</a>
+
+<div id="site-header"></div>
+
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h1>
+      <span class="mask">
+        <span>Parlons-en</span>
+      </span>
+    </h1>
+    <p class="lead">
+      Chaque projet commence par une conversation.
+      Nous serions heureux d'échanger avec vous.
+    </p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+<div class="wrap contact-grid">
+
+<!-- CONTACT INFORMATION -->
+
+<div class="rv">
+
+  <span class="eyebrow">Nos coordonnées</span>
+
+  <dl>
+
+    <div>
+      <dt>Cabinet</dt>
+      <dd>Omar Alaoui Architectes</dd>
+    </div>
+
+    <div>
+      <dt>Adresse</dt>
+      <dd>
+        13 avenue de la Côte d'Émeraude<br>
+        Casablanca, Maroc<br>
+
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=13+avenue+de+la+C%C3%B4te+d%27%C3%89meraude+Casablanca"
+          target="_blank"
+          rel="noopener"
+          style="font-family:var(--sans);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;border-bottom:1px solid"
+        >
+          Ouvrir dans Google Maps
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt>Téléphone</dt>
+      <dd>
+        <a href="tel:+212522392406">
+          +212 5 22 39 24 06
+        </a>
+      </dd>
+    </div>
+
+    <div>
+      <dt>Email</dt>
+      <dd>
+        <a href="mailto:contact@omaralaoui.ma">
+          contact@omaralaoui.ma
+        </a>
+      </dd>
+    </div>
+
+  </dl>
+
+</div>
+
+<!-- CONTACT FORM -->
+
+<form id="cform" class="rv" novalidate>
+
+  <span class="eyebrow">Envoyez-nous un message</span>
+
+  <div class="f">
+    <label for="name">Nom complet</label>
+    <input
+      id="name"
+      name="name"
+      autocomplete="name"
+      required
+      minlength="2"
+      aria-describedby="e1"
+    >
+    <span class="err" id="e1"></span>
+  </div>
+
+  <div class="f">
+    <label for="email">Adresse e-mail</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      autocomplete="email"
+      required
+      aria-describedby="e2"
+    >
+    <span class="err" id="e2"></span>
+  </div>
+
+  <div class="f">
+    <label for="subject">Sujet</label>
+    <select
+      id="subject"
+      name="subject"
+      required
+      aria-describedby="e3"
+    >
+      <option value="">Choisir un sujet...</option>
+      <option value="Nouveau projet">Nouveau projet</option>
+      <option value="Collaboration">Collaboration</option>
+      <option value="Presse">Presse</option>
+      <option value="Autre">Autre</option>
+    </select>
+    <span class="err" id="e3"></span>
+  </div>
+
+  <div class="f">
+    <label for="message">Votre message</label>
+    <textarea
+      id="message"
+      name="message"
+      required
+      minlength="10"
+      rows="5"
+      aria-describedby="e4"
+    ></textarea>
+    <span class="err" id="e4"></span>
+  </div>
+
+  <button class="btn dark" type="submit">
+    Envoyer le message
+  </button>
+
+  <p
+    id="ok"
+    class="ok"
+    role="status"
+    tabindex="-1"
+    style="display:none"
+  >
+    Votre application e-mail va s'ouvrir pour envoyer votre message.
+  </p>
+
+</form>
+
+</div>
+
+<div class="wrap">
+  <div class="mapbox">
+    Omar Alaoui Architectes — Casablanca, Maroc.
+    Merci de contacter le cabinet pour confirmer les coordonnées
+    avant tout déplacement.
+  </div>
+</div>
+
+</section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="script.js"></script>
+
+<script>
+(function () {
+
+  const form = document.getElementById('cform');
+
+  if (!form) return;
+
+  const fields = {
+    name: {
+      error: 'Veuillez saisir votre nom.',
+      validate: value => value.trim().length >= 2
+    },
+
+    email: {
+      error: 'Veuillez saisir une adresse e-mail valide.',
+      validate: value => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim())
+    },
+
+    subject: {
+      error: 'Veuillez choisir un sujet.',
+      validate: value => value !== ''
+    },
+
+    message: {
+      error: 'Votre message doit contenir au moins 10 caractères.',
+      validate: value => value.trim().length >= 10
+    }
+  };
+
+  function check(input) {
+
+    const rule = fields[input.name];
+
+    const error = input.parentElement.querySelector('.err');
+
+    const valid = rule.validate(input.value);
+
+    error.textContent = valid ? '' : rule.error;
+
+    input.setAttribute('aria-invalid', String(!valid));
+
+    return valid;
+  }
+
+  form.querySelectorAll('input, select, textarea')
+    .forEach(input => {
+
+      input.addEventListener('blur', () => check(input));
+
+      input.addEventListener('input', () => {
+
+        if (input.getAttribute('aria-invalid') === 'true') {
+          check(input);
+        }
+
+      });
+
+      input.addEventListener('change', () => check(input));
+
+    });
+
+  form.addEventListener('submit', function (event) {
+
+    event.preventDefault();
+
+    let valid = true;
+    let firstInvalid = null;
+
+    form.querySelectorAll('input, select, textarea')
+      .forEach(input => {
+
+        if (!check(input)) {
+          valid = false;
+          firstInvalid = firstInvalid || input;
+        }
+
+      });
+
+    if (!valid) {
+      firstInvalid.focus();
+      return;
+    }
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value.trim();
+
+    const recipient = 'contact@omaralaoui.ma';
+
+    const mailSubject = encodeURIComponent(subject + ' — ' + name);
+
+    const mailBody = encodeURIComponent(
+      'Nom : ' + name +
+      '\nE-mail : ' + email +
+      '\nSujet : ' + subject +
+      '\n\nMessage :\n' + message
+    );
+
+    const mailto =
+      'mailto:' + recipient +
+      '?subject=' + mailSubject +
+      '&body=' + mailBody;
+
+    document.getElementById('ok').style.display = 'block';
+
+    window.location.href = mailto;
+
+  });
+
+})();
+</script>
+
+</body>
+</html>
