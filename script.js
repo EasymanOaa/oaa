@@ -61,7 +61,7 @@
       concept: 'Un pôle scientifique et technologique conçu comme un campus, avec des bâtiments complémentaires tous dédiés à la recherche et à l’enseignement supérieur.',
       approach: 'Une architecture bioclimatique qui tire parti du potentiel du site, avec circulations ombragées et stratégies de rafraîchissement passif.' },
 
-    { id: 'marina-mall-casa', name: 'Marina Mall Casablanca', loc: 'Casablanca', cat: 'COMMERCIAL', year: '2019',
+    { id: 'marina-mall-casa', name: 'Marina Casablanca', loc: 'Casablanca', cat: 'COMMERCIAL', year: '2019',
       ph: 'ph-5',
       imgs: [
         'images/marina-mall-1.png'
@@ -133,7 +133,7 @@
   }
 
   /* ---------- Header / Footer injection ---------- */
-  var links  = [['index.html','ACCUEIL','home'],['work.html','RÉALISATIONS','work'],['contact.html','CONTACT','contact']];
+  var links  = [['index.html','ACCUEIL','home'],['work.html','RÉALISATIONS','work']];
   var navKey = page === 'project' ? 'work' : page;
   var nav = links.map(function (l) {
     return '<li><a href="' + l[0] + '"' + (l[2] === navKey ? ' aria-current="page"' : '') + '>' + l[1] + '</a></li>';
@@ -156,7 +156,7 @@
         '<p class="big">Une architecture façonnée par la lumière, la matière et le lieu.</p>' +
         '<div class="cols">' +
           '<span>© ' + new Date().getFullYear() + ' Omar Alaoui Architectes — Casablanca</span>' +
-          '<span><a href="work.html">Réalisations</a> &nbsp; <a href="contact.html">Contact</a></span>' +
+          '<span><a href="work.html">Réalisations</a></span>' +
         '</div>' +
       '</footer>';
   }
